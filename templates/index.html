@@ -1,0 +1,38 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %} Inicio {% endblock %}
+
+{% block 'styles' %}
+
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+{% endblock %}
+
+{% block 'content' %} 
+
+
+{% if user.is_authenticated %}
+
+<h1>Bienvenido {{ user.username }}</h1>
+
+  <p><a href="{% url 'logout' %}">Cerrar Sesión</a></p>
+    
+    <div class="cards">
+        <a href="{% url 'contact' %}" class="card">CONTACTOS</a>
+        <a href="{% url 'todo' %}" class="card">TAREAS</a>
+    </div>
+
+{% else %}
+  <h2>No has iniciado sesión</h2>
+  <button type="button" class="btn-login">
+    <a style="color: white" href="{% url 'login' %}">Iniciar Sesión</a>
+  </button>
+  <button type="button" class="btn-login">
+    <a href="{% url 'signup' %}" style="color: white">Registrarse!</a>
+  </button>    
+{% endif %}
+
+
+{% endblock %}

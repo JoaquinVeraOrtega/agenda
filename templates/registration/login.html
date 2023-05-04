@@ -1,0 +1,24 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %} LogIn {% endblock %}
+
+{% block 'styles' %}
+
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+{% endblock %}
+
+{% block 'content' %}
+
+<h2>Iniciar Sesión</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <div class="btn-wrapper">
+    <button type="submit" class="btn-login">Iniciar Sesión</button>
+  </div>
+
+</form>
+{% endblock %}
