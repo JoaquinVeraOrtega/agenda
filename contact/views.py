@@ -1,10 +1,13 @@
-from asyncio.windows_events import NULL
+import asyncio
+
 from django.shortcuts import render
 from .models import Contact
 from .forms import ContactForm
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+
+NULL = asyncio.AbstractEventLoop()
 
 @login_required
 def index(request, letter = NULL):
